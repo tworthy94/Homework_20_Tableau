@@ -2618,17 +2618,6 @@
               <bucket>&quot;West St &amp; Chambers St&quot;</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[none:gender:ok]' type='palette'>
-            <map to='#76b7b2'>
-              <bucket>1</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>0</bucket>
-            </map>
-            <map to='#ff9da7'>
-              <bucket>2</bucket>
-            </map>
-          </encoding>
           <encoding attr='color' field='[none:start station name:nk]' type='palette'>
             <map to='#499894'>
               <bucket>&quot;1 Ave &amp; E 94 St&quot;</bucket>
@@ -4935,6 +4924,17 @@
               <bucket>&quot;Willoughby St &amp; Fleet St&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[none:gender:ok]' type='palette'>
+            <map to='#76b7b2'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>0</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>2</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -5752,9 +5752,13 @@
             <column caption='Age' datatype='integer' name='[Calculation_829225297550897153]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='2019 - [birth year]' />
             </column>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
             <column-instance column='[tripduration]' derivation='Avg' name='[avg:tripduration:qk]' pivot='key' type='quantitative' />
             <column caption='Birth Year' datatype='integer' name='[birth year]' role='dimension' type='quantitative' />
             <column-instance column='[Calculation_829225297550897153]' derivation='None' name='[none:Calculation_829225297550897153:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
             <column caption='Tripduration' datatype='integer' name='[tripduration]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_826410549642219524]' derivation='User' name='[usr:Calculation_826410549642219524:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -5815,8 +5819,22 @@
             <mark class='Automatic' />
             <encodings>
               <color column='[federated.14cj0sa18u4js61ekenn20euv3yh].[usr:Calculation_826410549642219524:qk]' />
+              <tooltip column='[federated.14cj0sa18u4js61ekenn20euv3yh].[sum:Number of Records:qk]' />
               <text column='[federated.14cj0sa18u4js61ekenn20euv3yh].[none:Calculation_829225297550897153:qk]' />
             </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Age:&#9;</run>
+                <run bold='true'>&lt;[federated.14cj0sa18u4js61ekenn20euv3yh].[none:Calculation_829225297550897153:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Average Trip Duration in Minutes:&#9;</run>
+                <run bold='true'>&lt;[federated.14cj0sa18u4js61ekenn20euv3yh].[usr:Calculation_826410549642219524:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Rides:&#9;</run>
+                <run bold='true'>&lt;[federated.14cj0sa18u4js61ekenn20euv3yh].[sum:Number of Records:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
@@ -5882,8 +5900,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='900' minheight='900' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='24' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97790' id='25' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
+            <zone h='100000' id='30' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='31' param='vert' type='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='97790' id='3' is-fixed='true' name='End Station Map' w='40657' x='576' y='1105'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -5973,8 +5991,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='900' minheight='900' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='25' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97790' id='26' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
+            <zone h='100000' id='31' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97790' id='32' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
                 <zone fixed-size='280' h='97790' id='3' is-fixed='true' name='Start Station Map' w='38044' x='576' y='1105'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -6053,8 +6071,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='13' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97790' id='14' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
+            <zone h='100000' id='19' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97790' id='20' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
                 <zone fixed-size='280' h='97790' id='3' is-fixed='true' name='Trip Duration Per Bike' w='49424' x='576' y='1105'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -6131,8 +6149,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='21' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97790' id='22' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
+            <zone h='100000' id='27' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97790' id='28' param='vert' type='layout-flow' w='98848' x='576' y='1105'>
                 <zone fixed-size='280' h='97790' id='3' is-fixed='true' name='Trip Duration Young Adults VS Seniors' w='74442' x='24982' y='1105'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -6477,7 +6495,7 @@
       </viewpoint>
       <simple-id uuid='{69FEC0A8-915C-4B7E-B0B7-82A6935937DD}' />
     </window>
-    <window class='worksheet' name='Trip Duration Young Adults VS Seniors'>
+    <window class='worksheet' maximized='true' name='Trip Duration Young Adults VS Seniors'>
       <cards>
         <edge name='left'>
           <strip size='190'>
@@ -6626,7 +6644,7 @@
       <active id='3' />
       <simple-id uuid='{438CA9FD-264B-46ED-BD88-69FB54E21EC2}' />
     </window>
-    <window class='dashboard' maximized='true' name='Bike Stats'>
+    <window class='dashboard' name='Bike Stats'>
       <viewpoints>
         <viewpoint name='Most Rides Per Bike'>
           <zoom type='entire-view' />
